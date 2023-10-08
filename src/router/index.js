@@ -7,14 +7,14 @@ const routes = [
     component: () => import('@/layouts/default/Default.vue'),
     children: [
       {
-        path: '',
+        path: 'home',
         name: 'Home',
         component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
       },
       {
         path: 'clients',
         name: 'Clients',
-        component: () => import(/* webpackChunkName: "home" */ '@/views/clients/Index.vue'),
+        component: () => import(/* webpackChunkName: "clients" */ '@/views/clients/Index.vue'),
       },
     ],
   },
