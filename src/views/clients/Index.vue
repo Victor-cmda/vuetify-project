@@ -1,29 +1,38 @@
 <template>
-    <!-- <v-main> -->
     <v-container>
 
         <v-card flat class="rounded-b-xl elevation-4">
+
 
             <div class="d-flex justify-space-between table-title">
                 <v-card-title>
                     <h2>Clientes</h2>
                 </v-card-title>
+
                 <v-card-title>
-                    <v-btn @click="isDialogOpen = true" variant="tonal" color="primary">Adicionar novo</v-btn>
-                    <v-dialog width="600px" v-model="isDialogOpen">
-                        Adicionar novo
-                    </v-dialog>
+                    <v-btn @click="openAddDialog" variant="tonal" color="primary">Adicionar novo</v-btn>
+                    <ClientsDialog v-model="isDialogOpen" :item="itemToEdit" :mode="mode" />
                 </v-card-title>
             </div>
 
+                <v-card-title class="table-title">
+                    <v-text-field label="Filtrar clientes" v-model="filter" prepend-icon="mdi-filter-multiple"
+                        variant="underlined"></v-text-field>
+                </v-card-title>
             <v-table fixed-header>
                 <thead>
                     <tr>
-                        <th class="text-left">
-                            Name
+                        <th class="text-center">
+                            Id
                         </th>
                         <th class="text-left">
-                            Calories
+                            Nome
+                        </th>
+                        <th class="text-left">
+                            Celular
+                        </th>
+                        <th class="text-left">
+                            Cidade
                         </th>
                         <th class="text-left actions-column">
                             Ações
@@ -31,9 +40,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="item in desserts" :key="item.name">
+                    <tr v-for="item in filteredDesserts" :key="item.id">
+                        <td class="text-center">{{ item.id }}</td>
                         <td>{{ item.name }}</td>
-                        <td>{{ item.calories }}</td>
+                        <td>{{ item.celular }}</td>
+                        <td>{{ item.cidade }}</td>
                         <td>
                             <v-menu>
                                 <template #activator="{ props }">
@@ -43,7 +54,8 @@
                                 </template>
                                 <v-card min-width="150px">
                                     <v-list lines="false" nav>
-                                        <v-list-item prepend-icon="mdi-pencil" to="/" color="info">
+                                        <v-list-item @click="openEditDialog(item, mode)" prepend-icon="mdi-pencil"
+                                            color="info">
                                             <v-list-item-title>Editar</v-list-item-title>
                                         </v-list-item>
                                         <v-list-item prepend-icon="mdi-cog-outline" to="/" color="error">
@@ -59,98 +71,90 @@
         </v-card>
 
     </v-container>
-    <!-- </v-main> -->
 </template>
   
 <script>
 import { ref } from 'vue'
+import ClientsDialog from './Dialog.vue';
+
 const isDialogOpen = ref(false)
 
 export default {
+    methods: {
+        openAddDialog() {
+            this.mode = 'add';
+            this.isDialogOpen = true;
+        },
+        openEditDialog(item) {
+            this.mode = 'edit';
+            this.itemToEdit = item;
+            this.isDialogOpen = true;
+        },
+    },
+    components: {
+        ClientsDialog
+    },
+    computed: {
+        filteredDesserts() {
+            return this.desserts.filter(dessert =>
+                dessert.name.toLowerCase().includes(this.filter.toLowerCase()) ||
+                dessert.id.toString().includes(this.filter) ||
+                dessert.celular.toLowerCase().includes(this.filter.toLowerCase()) ||
+                dessert.cidade.toLowerCase().includes(this.filter.toLowerCase())
+            );
+        }
+    },
     data() {
         return {
+            mode: 'add',
+            itemToEdit: null,
             isDialogOpen: false,
+            filter: '',
+            props: {
+                item: {
+                    type: Object,
+                    default: null
+                },
+            },
+
             desserts: [
                 {
+                    id: 1,
                     name: 'Frozen Yogurt',
-                    calories: 159,
+                    celular: '(45) 9 984063065',
+                    cidade: 'Foz do Iguaçu'
                 },
                 {
-                    name: 'Ice cream sandwich',
-                    calories: 237,
-                },
-                {
-                    name: 'Eclair',
-                    calories: 262,
-                },
-                {
-                    name: 'Cupcake',
-                    calories: 305,
-                },
-                {
-                    name: 'Gingerbread',
-                    calories: 356,
-                },
-                {
-                    name: 'Jelly bean',
-                    calories: 375,
-                },
-                {
-                    name: 'Lollipop',
-                    calories: 392,
-                },
-                {
-                    name: 'Honeycomb',
-                    calories: 408,
-                },
-                {
-                    name: 'Donut',
-                    calories: 452,
-                },
-                {
-                    name: 'KitKat',
-                    calories: 518,
-                },
-                {
+                    id: 1,
                     name: 'Frozen Yogurt',
-                    calories: 159,
+                    celular: '(45) 9 984063065',
+                    cidade: 'Foz do Iguaçu'
                 },
                 {
-                    name: 'Ice cream sandwich',
-                    calories: 237,
+                    id: 1,
+                    name: 'Victor',
+                    celular: '(45) 9 984063065',
+                    cidade: 'Foz do Iguaçu'
                 },
                 {
-                    name: 'Eclair',
-                    calories: 262,
+                    id: 1,
+                    name: 'Frozen Yogurt',
+                    celular: '(45) 9 984063065',
+                    cidade: 'Cascavel'
                 },
                 {
-                    name: 'Cupcake',
-                    calories: 305,
+                    id: 1,
+                    name: 'Frozen Yogurt',
+                    celular: '(45) 9 984063065',
+                    cidade: 'Foz do Iguaçu'
                 },
                 {
-                    name: 'Gingerbread',
-                    calories: 356,
+                    id: 1,
+                    name: 'Frozen Yogurt',
+                    celular: '(45) 9 984063065',
+                    cidade: 'Foz do Iguaçu'
                 },
-                {
-                    name: 'Jelly bean',
-                    calories: 375,
-                },
-                {
-                    name: 'Lollipop',
-                    calories: 392,
-                },
-                {
-                    name: 'Honeycomb',
-                    calories: 408,
-                },
-                {
-                    name: 'Donut',
-                    calories: 452,
-                },
-                {
-                    name: 'KitKat',
-                    calories: 518,
-                },
+
             ],
         }
 
@@ -194,4 +198,5 @@ body,
 
 .actions-column {
     width: 8%;
-}</style>
+}
+</style>
