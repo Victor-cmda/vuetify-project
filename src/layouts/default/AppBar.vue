@@ -4,16 +4,11 @@
 
       <v-list-subheader>MyApp</v-list-subheader>
 
-      <v-list-item prepend-icon="mdi-home" to="/">Home</v-list-item>
-
-      <v-list-item prepend-icon="mdi-account">Usuários</v-list-item>
+      <v-list-item prepend-icon="mdi-home" to="home">Home</v-list-item>
 
       <v-list-group value="Clients">
-        <template #activator="{props}">
-          <v-list-item
-            v-bind="props"
-            prepend-icon="mdi-account-multiple-outline"
-            title="Clientes">
+        <template #activator="{ props }">
+          <v-list-item v-bind="props" prepend-icon="mdi-account-multiple-outline" title="Clientes">
           </v-list-item>
         </template>
         <v-list-item prepend-icon="mdi-account-group" to="clients">Cadastros</v-list-item>
@@ -21,11 +16,8 @@
       </v-list-group>
 
       <v-list-group value="Suppliers">
-        <template #activator="{props}">
-          <v-list-item
-            v-bind="props"
-            prepend-icon="mdi-briefcase-account-outline"
-            title="Fornecedores">
+        <template #activator="{ props }">
+          <v-list-item v-bind="props" prepend-icon="mdi-briefcase-account-outline" title="Fornecedores">
           </v-list-item>
         </template>
         <v-list-item prepend-icon="mdi-account-group">Cadastros</v-list-item>
@@ -42,18 +34,22 @@
 
     <template #append>
       <v-menu>
-        <template #activator="{props}">
+        <template #activator="{ props }">
           <v-btn v-bind="props" icon class="mr-2">
-          <v-badge color="primary">
-            <template #badge>
-              <v-icon icon="mdi-bell-outline"></v-icon>
-            </template>
-            <v-icon icon="mdi-account-circle"></v-icon>
-          </v-badge>
-        </v-btn>
+            <v-badge color="primary">
+              <template #badge>
+                <v-icon icon="mdi-bell-outline"></v-icon>
+              </template>
+              <v-icon icon="mdi-account-circle"></v-icon>
+            </v-badge>
+          </v-btn>
         </template>
         <v-card min-width="200px">
           <v-list lines="false" density="compact" nav>
+            <v-list-item>
+              <v-switch v-model="isDark" @change="toggleTheme" small color="primary" hide-details
+                label="Modo noite"></v-switch>
+            </v-list-item>
             <v-list-item to="clients" prepend-icon="mdi-account-outline">
               <v-list-item-title>Meu Perfil</v-list-item-title>
             </v-list-item>
@@ -63,6 +59,7 @@
             <v-list-item prepend-icon="mdi-bell-outline">
               <v-list-item-title>Notificações</v-list-item-title>
             </v-list-item>
+
           </v-list>
         </v-card>
       </v-menu>
@@ -73,5 +70,15 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useTheme } from 'vuetify'
+
 const isDrawerOpen = ref(false)
+const theme = useTheme()
+
+const isDark = ref(theme.global.current.value.dark)
+
+function toggleTheme() {
+  theme.global.name.value = isDark.value ? 'dark' : 'light';
+}
 </script>
+
