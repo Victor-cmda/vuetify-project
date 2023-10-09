@@ -15,10 +15,10 @@
                 </v-card-title>
             </div>
 
-                <v-card-title class="table-title">
-                    <v-text-field label="Filtrar clientes" v-model="filter" prepend-icon="mdi-filter-multiple"
-                        variant="underlined"></v-text-field>
-                </v-card-title>
+            <v-card-title class="table-title">
+                <v-text-field label="Filtrar clientes" v-model="filter" prepend-icon="mdi-filter-multiple"
+                    variant="underlined"></v-text-field>
+            </v-card-title>
             <v-table fixed-header>
                 <thead>
                     <tr>
@@ -52,14 +52,17 @@
                                         <v-icon icon="mdi-dots-vertical"></v-icon>
                                     </v-btn>
                                 </template>
-                                <v-card min-width="150px">
-                                    <v-list lines="false" nav>
-                                        <v-list-item @click="openEditDialog(item, mode)" prepend-icon="mdi-pencil"
-                                            color="info">
-                                            <v-list-item-title>Editar</v-list-item-title>
+                                <v-card>
+                                    <v-list lines="true" nav>
+                                        <v-list-item>
+                                            <v-btn @click="openEditDialog(item, mode)" prepend-icon="mdi-pencil"
+                                                variant="tonal" color="info">Editar</v-btn>
                                         </v-list-item>
-                                        <v-list-item prepend-icon="mdi-cog-outline" to="/" color="error">
-                                            <v-list-item-title>Excluir</v-list-item-title>
+                                        <v-list-item>
+                                            <v-btn @click.stop="openConfirmDeleteDialog(item)" prepend-icon="mdi-cog-outline" variant="tonal" color="error">
+                                                Excluir
+                                            </v-btn>
+                                            <ConfirmDeleteDialog v-model="isDialogDeleteOpen" @confirm="deleteItem(item)" />
                                         </v-list-item>
                                     </v-list>
                                 </v-card>
@@ -76,8 +79,10 @@
 <script>
 import { ref } from 'vue'
 import ClientsDialog from './Dialog.vue';
+import ConfirmDeleteDialog from '@/components/dialogs/ConfirmDeleteDialog.vue';
 
 const isDialogOpen = ref(false)
+const isDialogDeleteOpen = ref(false)
 
 export default {
     methods: {
@@ -90,9 +95,17 @@ export default {
             this.itemToEdit = item;
             this.isDialogOpen = true;
         },
+        openConfirmDeleteDialog(item) {
+            this.itemToDelete = item;
+            this.isDialogDeleteOpen = true;
+        },
+        deleteItem(item) {
+            console.log("Item excluído:", item);
+        },
     },
     components: {
-        ClientsDialog
+        ClientsDialog,
+        ConfirmDeleteDialog
     },
     computed: {
         filteredDesserts() {
@@ -108,7 +121,9 @@ export default {
         return {
             mode: 'add',
             itemToEdit: null,
+            itemToDelete: null,
             isDialogOpen: false,
+            isDialogDeleteOpen: false,
             filter: '',
             props: {
                 item: {
@@ -154,7 +169,6 @@ export default {
                     celular: '(45) 9 984063065',
                     cidade: 'Foz do Iguaçu'
                 },
-
             ],
         }
 
