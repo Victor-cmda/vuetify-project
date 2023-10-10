@@ -7,7 +7,7 @@
         <v-btn icon dark @click="close">
           <v-icon>mdi-close</v-icon>
         </v-btn>
-        <v-toolbar-title>{{ mode === 'add' ? 'Adicionar Cliente' : 'Editar Cliente' }}</v-toolbar-title>
+        <v-toolbar-title>{{ mode === 'add' ? 'Adicionar Produtos' : 'Editar Produtos' }}</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
           <v-btn variant="text" @click="save">
@@ -26,7 +26,7 @@
         <v-container>
           <v-list-subheader>Geral</v-list-subheader>
           <v-row>
-            <v-col cols="6"><v-text-field label="Nome do Cliente" v-model="clientData.Nomecliente"></v-text-field></v-col>
+            <v-col cols="6"><v-text-field label="Nome do Produtos" v-model="clientData.Nomecliente"></v-text-field></v-col>
             <v-col cols="6"><v-text-field label="Endereço" v-model="clientData.Endereco"></v-text-field></v-col>
             <v-col cols="6"><v-text-field label="Cidade" v-model="clientData.Cidade"></v-text-field></v-col>
             <v-col cols="6"><v-text-field label="CEP" v-model="clientData.Cep"></v-text-field></v-col>

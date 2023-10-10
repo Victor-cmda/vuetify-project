@@ -11,7 +11,7 @@
 
 <script>
 import LottieAnimation from '@/components/LottieAnimation';
-import myAnimationData from '@/assets/animation3.json';
+import myAnimationData from '@/assets/animation1.json';
 
 export default {
   components: {

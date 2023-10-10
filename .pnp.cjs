@@ -33,6 +33,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["core-js", "npm:3.33.0"],\
             ["eslint", "npm:8.51.0"],\
             ["eslint-plugin-vue", "virtual:5a59cc375f69ba352f1b6581ff36beddeece3b3e6274cbfb36faebb448ec6c4653aabaefc5c8cd322235a746de8ae18a1cbfb2f6097dc8a19ee1af30a8fcec8e#npm:9.17.0"],\
+            ["lottie-web", "npm:5.12.2"],\
             ["pinia", "virtual:5a59cc375f69ba352f1b6581ff36beddeece3b3e6274cbfb36faebb448ec6c4653aabaefc5c8cd322235a746de8ae18a1cbfb2f6097dc8a19ee1af30a8fcec8e#npm:2.1.6"],\
             ["roboto-fontface", "npm:0.10.0"],\
             ["sass", "npm:1.69.0"],\
@@ -1957,6 +1958,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["lottie-web", [\
+        ["npm:5.12.2", {\
+          "packageLocation": "./.yarn/cache/lottie-web-npm-5.12.2-942dc9e22a-af5bc3bc40.zip/node_modules/lottie-web/",\
+          "packageDependencies": [\
+            ["lottie-web", "npm:5.12.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["lru-cache", [\
         ["npm:10.0.1", {\
           "packageLocation": "./.yarn/cache/lru-cache-npm-10.0.1-0e1abf4c13-06f8d0e1ce.zip/node_modules/lru-cache/",\
@@ -3181,6 +3191,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["core-js", "npm:3.33.0"],\
             ["eslint", "npm:8.51.0"],\
             ["eslint-plugin-vue", "virtual:5a59cc375f69ba352f1b6581ff36beddeece3b3e6274cbfb36faebb448ec6c4653aabaefc5c8cd322235a746de8ae18a1cbfb2f6097dc8a19ee1af30a8fcec8e#npm:9.17.0"],\
+            ["lottie-web", "npm:5.12.2"],\
             ["pinia", "virtual:5a59cc375f69ba352f1b6581ff36beddeece3b3e6274cbfb36faebb448ec6c4653aabaefc5c8cd322235a746de8ae18a1cbfb2f6097dc8a19ee1af30a8fcec8e#npm:2.1.6"],\
             ["roboto-fontface", "npm:0.10.0"],\
             ["sass", "npm:1.69.0"],\

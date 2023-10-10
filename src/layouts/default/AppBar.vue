@@ -12,7 +12,6 @@
           </v-list-item>
         </template>
         <v-list-item prepend-icon="mdi-account-group" to="clients">Cadastros</v-list-item>
-        <v-list-item prepend-icon="mdi-cog">Configurações</v-list-item>
       </v-list-group>
 
       <v-list-group value="Suppliers">
@@ -20,8 +19,31 @@
           <v-list-item v-bind="props" prepend-icon="mdi-briefcase-account-outline" title="Fornecedores">
           </v-list-item>
         </template>
-        <v-list-item prepend-icon="mdi-account-group">Cadastros</v-list-item>
-        <v-list-item prepend-icon="mdi-cog">Configurações</v-list-item>
+        <v-list-item prepend-icon="mdi-card-account-details" to="suppliers">Cadastros</v-list-item>
+      </v-list-group>
+
+      <v-list-group value="Seller">
+        <template #activator="{ props }">
+          <v-list-item v-bind="props" prepend-icon="mdi-badge-account" title="Vendedor">
+          </v-list-item>
+        </template>
+        <v-list-item prepend-icon="mdi-account-box" to="seller">Cadastros</v-list-item>
+      </v-list-group>
+
+      <v-list-group value="Products">
+        <template #activator="{ props }">
+          <v-list-item v-bind="props" prepend-icon="mdi-package-variant-closed" title="Produtos">
+          </v-list-item>
+        </template>
+        <v-list-item prepend-icon="mdi-package-variant" to="products">Cadastros</v-list-item>
+      </v-list-group>
+
+      <v-list-group value="Budget">
+        <template #activator="{ props }">
+          <v-list-item v-bind="props" prepend-icon="mdi-hand-coin-outline" title="Orçamento">
+          </v-list-item>
+        </template>
+        <v-list-item prepend-icon="mdi-checkbook" to="budget">Cadastros</v-list-item>
       </v-list-group>
 
     </v-list>
@@ -50,7 +72,7 @@
               <v-switch v-model="isDark" @change="toggleTheme" small color="primary" hide-details
                 label="Modo noite"></v-switch>
             </v-list-item>
-            <v-list-item to="clients" prepend-icon="mdi-account-outline">
+            <v-list-item prepend-icon="mdi-account-outline">
               <v-list-item-title>Meu Perfil</v-list-item-title>
             </v-list-item>
             <v-list-item prepend-icon="mdi-cog-outline">

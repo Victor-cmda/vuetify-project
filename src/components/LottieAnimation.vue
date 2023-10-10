@@ -31,12 +31,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* 100% da altura da viewport */
+    height: 80vh;
   }
   
   .lottie-container {
-    width: 100vh;  /* ou qualquer valor desejado */
-    height: 100vh; /* ou qualquer valor desejado */
+    width: 100vh;
+    height: 100vh;
     overflow: hidden;
   }
   </style>

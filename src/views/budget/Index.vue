@@ -6,7 +6,7 @@
 
             <div class="d-flex justify-space-between table-title">
                 <v-card-title>
-                    <h2>Clientes</h2>
+                    <h2>Orçamento</h2>
                 </v-card-title>
 
                 <v-card-title>
@@ -16,7 +16,7 @@
             </div>
 
             <v-card-title class="table-title">
-                <v-text-field label="Filtrar clientes" v-model="filter" prepend-icon="mdi-filter-multiple"
+                <v-text-field label="Filtrar orçamento" v-model="filter" prepend-icon="mdi-filter-multiple"
                     variant="underlined"></v-text-field>
             </v-card-title>
             <v-table fixed-header>
