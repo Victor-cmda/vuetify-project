@@ -1,9 +1,6 @@
 <template>
     <v-container>
-
         <v-card flat class="rounded-b-xl elevation-4">
-
-
             <div class="d-flex justify-space-between table-title">
                 <v-card-title>
                     <h2>Orçamento</h2>
@@ -14,7 +11,6 @@
                     <Dialog v-model="isDialogOpen" :item="itemToEdit" :mode="mode" />
                 </v-card-title>
             </div>
-
             <v-card-title class="table-title">
                 <v-text-field label="Filtrar orçamento" v-model="filter" prepend-icon="mdi-filter-multiple"
                     variant="underlined"></v-text-field>
